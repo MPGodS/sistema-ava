@@ -4,7 +4,7 @@ from database import Base
 
 
 class Curso(Base):
-    __tablename__ = "cursos"
+    __tablename__ = "cursos_prova_final"
 
     id = Column(Integer, primary_key=True, index=True)
     titulo = Column(String(100), nullable=False)
@@ -25,6 +25,7 @@ class Aluno(Base):
     email = Column(String(255), nullable=False)
     idade = Column(Integer, nullable=False)
     cpf = Column(Integer, nullable=False)
-    id_curso = Column(Integer, ForeignKey("cursos.id"), nullable=False)
+    id_curso = Column(Integer, ForeignKey(
+        "cursos_prova_final.id"), nullable=False)
 
     aluno_curso = relationship("Curso", back_populates="alunos")
